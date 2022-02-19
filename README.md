@@ -9,6 +9,8 @@ This plugin, like all others, is free but if you want to donate, use: http://198
 ## Change Log
 
 ```
+1.1.0: Reworked plugin to work with BR updates
+1.0.2: Added missing CustomData folder with border and background.
 1.0.1: Fixed manifest with correct description. No plugin change.
 1.0.0: Initial release
 ```
@@ -23,18 +25,14 @@ Use R2ModMan to configure optional settings for the plugin.
 
 ### Basic Usage (For Sending Individual Cut-Scene Views To Players)
 
-As GM, add cut-scene views to the selection of view by using the keyboard shortcut (default LCTRL+P).
+As GM, add cut-scene views to the selection of view using the regular core Cutscene functionality.
 
-To send a cut-scene view to a player, open the stream view menu using the keyboard shortcut (default LSHIFT+P).
+To send a cut-scene view to a player, select the eye icon beside the disired cutscene (to select the cutscene without
+sending it). Then press the Send keyboard combination (default RCTRL+S for send). This opens the player menu. Click on
+the desired player and the corresponding cut-scene will be sent to that player.
 
-This displays all of the cut-scene views available and highights the selected one with a fire border.
-
-Select the desired cut-scene and use the buttons on the right to send it to one of the listed players. To send it to
-multipole players just click the button beside each player. Use the "Delete View" button to remove the cut-scene from
-the cut-scene list (making room for new cut-scenes).
-
-When a player send a cut-scene mode, their camera will show the cut-scene. Pressing the mouse button or any key exits
-cut-scene mode and returns the view backt to the view before the cut-scene was activated.
+When a cutscene is active pressing any key will end the cutscene and return the camera to the position and orientation
+it was in before the cutscene was activated.
 
 ### Streaming Usage (For GMs That Want Additional Views Of The Action For Their Streams)
 
@@ -47,20 +45,29 @@ Update the above if you are using different R2ModMan profile than "default".
 
 Once you have established multiple connection, set the identity for each connection that will be used for a stream
 view (i.e. all connections except the one connection used by the GM). To do this press the keyboard shortcut associated
-with each camera person (default RCTRL+1 to RCTRL+3). Each connection being used for a stream view should be assigned
+with each camera person (default RCTRL+1 or RCTRL+2). Each connection being used for a stream view should be assigned
 a unique camera identity.
 
-To create cut-scene views, see the instructions under Basic Usage.
-To send a cut-scene view to the camera person, see the instructions under Basic Usage but instead of selecting a player
-name, select one of the three camera person buttons (to send it to the corresponding camera person).
+Send cutscenes to the stream views cameras just like you would send cutscene views to any player except select the
+desired camera from the player menu as opposed to choosing a player name. Since stream view sessions are typically
+unattended, the view will remain in the cutscene view until replaced by a different cutscene view.
 
-In your streaming software, you can now use the instances of running Talespire associated with the camera persons as
-views into the action without needing any player or the GM to be looking that way. 
+### Custom Settings
 
-## Limitation
+The plugin comes with a bunch of custom settings that can be set using the R2ModMan configuration for the plugin.
 
-Currently cut-scene views change the position and rotation of the camera but do not adjust the focus point. Hopefully
-this will be addressed in a future update but currently that means that in many cases the cut-scene view can be out of
-focus. To compensate for this, the plugin allows you to turn the post processing off (which is the default). This fixes
-the focus issue but does not have all of the visual effect of the scene with post processing. Once the cut-scene view
-ends, the post processing setting is restored. 
+The keyboard shortcuts for Send Cutscene To Player, Claim Camera 1 Identity and Claim Camera 2 Identity can be
+changed using the configruation.
+
+The menu font color, size and the spacing between entries can be configured.
+
+The Close Player Menu After One Selection allows configruation if the player menu should close as soon as the cutscene
+has been sent to one player or if it should remain open (until the close menu option is used) so that the same cutscene
+can be sent to multiple players.
+
+The background image can be customized be editing Images/org.lordashes.plugins.streamviews.menu.png. This image is scaled
+based on the number of entries in the list and the width of the menu buttons (see below). Borders of about 30 pixels are
+added in each direction.
+
+The button image can be customized be editing Images/org.lordashes.plugins.streamviews.button.png. This image is not scaled
+and is used to determine the size of the background image.
